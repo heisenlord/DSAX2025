@@ -19,6 +19,7 @@ class LinkedList{
     void middle(){
 
     }
+    //middle using The Tortoise and Hare
     public ListNode middleNode(ListNode head) {
        
         ListNode fast=head;
@@ -32,7 +33,7 @@ class LinkedList{
         }
         return slow;
     }
-    //reverse leetcode 206
+    //reverse iterative leetcode 206
     public Node reverseList(Node head) {
         Node prev=null;
         Node temp=head;
@@ -44,7 +45,18 @@ class LinkedList{
             temp=help;
         }
         return head;
-
+    }
+    //reverse recursive leetcode 206
+    public ListNode reverseList(ListNode head) {
+        if(head==null||head.next==null){
+            return head;
+        }
+        ListNode newhead=reverseList(head.next);
+        ListNode front=head.next;
+        front.next=head;
+        head.next=null;
+        return newhead;
+        
     }
 }
 public class LLMEDIUMPROB {
