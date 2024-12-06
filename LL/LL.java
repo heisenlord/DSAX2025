@@ -55,6 +55,28 @@ class LinkedList{
     //     node.val=node.next.val;
     //     node.next=node.next.next;
     //  }
+    //count GFG
+    // public int getCount(Node head) {
+    //     int count=0;
+    //     while(head!=null){
+    //         count++;
+    //         head=head.next;
+    //     }
+    //     return count;
+    // }
+    //search key GFG
+    // static boolean searchKey(int n, Node head, int key) {
+    //     for(int i=0;i<n;i++){
+    //         if(head.data==key){
+    //             return true;
+    //         }
+    //         head=head.next;
+    //     }
+    //     return false;
+    // }
+
+
+
     void display(){
         Node temp=head;
         while(temp!=null){
