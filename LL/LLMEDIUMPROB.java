@@ -73,7 +73,7 @@ class LinkedList{
               }
         }
         return false;
-      }
+    }
 
       //leetcode 142
       public ListNode detectCycle(ListNode head) {
@@ -87,9 +87,71 @@ class LinkedList{
             temp=temp.next;
         }
         return null;
+       }
+       //leetcode 142 Tortoise and Hare
+       public ListNode detectCycle2(ListNode head) {
+        ListNode slow=head;
+        ListNode fast=head;
+        while(fast!=null&&fast.next!=null&&fast.next.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast){
+                slow=head;
+                while(slow!=fast){
+                    slow=slow.next;
+                    fast=fast.next;
+                }
+                return slow;
+            }
+        }
+        return null;
     }
+    //find length of loop
+    public int countNodesinLoop(Node head) {
+        Node slow=head;
+        Node fast=head;
+        int count=0;
+        while(fast!=null&&fast.next!=null&&fast.next.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+      
+               if(slow==fast){
+                   fast=fast.next;
+                   while(slow!=fast){
+                        fast=fast.next;
+                        count++;
+                   }
+               
+              return count+1;
+            }
+            
+        }
+        return 0;
+    }
+    //palindrome leetcode 234
+    //remove nthnode from last linkedlist leetcode19
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+      
+        ListNode fast=head;
+        ListNode slow=head;
+        for(int i=0;i<n;i++){
+            fast=fast.next;
+        }
+        if (fast == null)
+            return head.next;
 
+        while(fast.next!=null){
+            slow=slow.next;
+            fast=fast.next;
+        }
+             slow.next=slow.next.next;
+
+    
+        return head;
+    }
 }
+
+
 public class LLMEDIUMPROB {
     public static void main(String[] args) {
         
