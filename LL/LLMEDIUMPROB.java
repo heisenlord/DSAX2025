@@ -1,4 +1,5 @@
 package LL;
+import java.util.*;
 class Node{
     int data;
     Node next;
@@ -73,6 +74,21 @@ class LinkedList{
         }
         return false;
       }
+
+      //leetcode 142
+      public ListNode detectCycle(ListNode head) {
+        Set<ListNode> set=new HashSet<>();
+        ListNode temp=head;
+        while(temp!=null){
+            if(set.contains(temp)){
+                return temp;
+            }
+            set.add(temp);
+            temp=temp.next;
+        }
+        return null;
+    }
+
 }
 public class LLMEDIUMPROB {
     public static void main(String[] args) {
