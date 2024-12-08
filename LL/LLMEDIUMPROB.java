@@ -161,6 +161,95 @@ class LinkedList{
         slow.next = slow.next.next;
         return head;
     }
+    //reverse k gorup 
+    class Solution {
+        public ListNode reverse(ListNode temp){
+            ListNode prev=null;
+            while(temp!=null){
+                ListNode help=temp.next;
+                temp.next=prev;
+                prev=temp;
+                temp=help;
+            }
+            return prev;
+        }
+        public ListNode reverseKGroup(ListNode head, int k) {
+            if(head==null||k==1){
+                return head;
+            
+            }
+            ListNode temp=head;
+            ListNode prev=null;
+            while(temp!=null){
+                ListNode kthNode=kthNode(temp,k);
+                if(kthNode==null){
+                    if(temp!=null){
+                    prev.next=temp;
+    
+                    }
+                    break;
+                }
+                ListNode nextNode=kthNode.next;
+                kthNode.next=null;
+                reverse(temp);
+                if(temp==head){
+                    head=kthNode;
+                }else{
+                    prev.next=kthNode;
+                }
+                prev=temp;
+                temp=nextNode;
+            }
+            return head;
+        }
+        public ListNode kthNode(ListNode temp,int k){
+       
+            while(temp!=null&&k>1){
+                k--;
+                temp=temp.next;
+            }
+            return temp;
+        }
+    }
+    //rotate list
+    public ListNode rotateRight(ListNode head, int k) {
+        if (head == null) return head;
+        if (k == 0) return head;
+
+        ListNode cur = head;
+        int n = 0;
+
+        while (cur.next != null) {
+            cur = cur.next;
+            n++;
+        }
+
+        int a = k % (n + 1);
+        if (a == 0) return head;
+
+        ListNode cur1 = head;
+        ListNode cur2 = new ListNode(-1);
+        cur2.next = head;
+
+        while (a > 1) {
+            cur1 = cur1.next;
+            a--;
+        }
+
+        while(cur1.next != null) {
+            cur1 = cur1.next;
+            cur2 = cur2.next;
+        }
+
+        ListNode ans = cur2.next;
+        cur2.next = null;
+
+        if (cur != head) {
+            cur.next = head;
+        }
+
+        return ans;
+    }
 }
 
 
